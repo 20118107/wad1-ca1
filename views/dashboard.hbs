@@ -1,0 +1,22 @@
+{{> menu}}
+
+<section class="ui segment">
+  <h1>{{title}}</h1>
+
+{{#each genres}}
+  <h3 class="genre-title">{{@key}}</h3>
+  <div class="ui cards">
+    {{#each this}}
+      <div class="book-card card">
+        <div class="content">
+          <div class="header">{{this.title}}</div>
+          <div class="meta">{{this.author}}</div>
+        </div>
+        <div class="extra content">
+          <a href="/book/{{this.id}}">View</a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/each}}
+</section>

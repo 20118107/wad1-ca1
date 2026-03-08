@@ -8,7 +8,233 @@ html {
 }
 
 body {
-  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-family: serif;
   margin: 2em;
-  background-color: lightgrey;
+  background-image: url(background.png);
+  background-size: cover;       /* make it fill the screen */
+  background-position: center;  /* center the image */
+  background-repeat: no-repeat; /* don’t repeat the image */
+  font-family: serif;
+  background-attachment: fixed;
+}
+
+h1 {
+  color: wheat;
+  font-family: serif;
+  text-decoration: underline;
+}
+
+.welcome-section {
+    margin-top: 50px;
+}
+
+.welcome-text {
+    font-size: 1.2em;
+    margin: 30px 0 20px 0;
+    color: wheat;
+}
+
+.welcome-image {
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.go-dashboard {
+    margin-top: 20px;
+}
+
+.ui.segment {
+    margin: 40px auto;
+    text-align: center;
+}
+
+.ui.segment, .book-card {
+    background-color: rgb(20, 15, 9, 0.9);
+    border-radius: 18px;
+    padding: 20px;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0,0,0,1);
+}
+
+.ui.menu {
+    background-color: rgb(20, 15, 9, 0.9);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,1); 
+}
+
+.ui.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.site-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+    margin: 40px 0 10px 0;
+    padding: 15px 30px;
+    background-color: rgba(20, 15, 9, 0.9);
+    border-radius: 18px;
+    box-shadow: 0 2px 6px rgba(0,0,0,1);
+}
+
+.nav-link {
+    color: wheat;
+    text-decoration: none;
+    font-family: serif;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    padding: 10px 25px;
+    border-radius: 12px;
+    transition: all 0.3s;
+    font-size: 1.6rem;
+}
+
+.nav-link:first-child {
+    justify-self: start;   /* stick left link to left side */
+}
+
+.nav-link:last-child {
+    justify-self: end;     /* stick right link to right side */
+}
+
+
+.nav-link:hover {
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    text-shadow: 0 0 6px rgba(255,255,255,0.5);
+}
+
+.app-title {
+    justify-self: center;
+    font-size: 3.2rem;
+    font-weight: bold;
+    color: wheat;
+    text-decoration: none;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+
+
+.app-title:hover {
+    color: white;
+    transition: 0.4s;
+}
+
+.title-decoration {
+    width: 100%;           /* stretch across screen */
+    display: block;
+    text-align: center;    /* keep the characters centered */
+    font-size: 2.9rem;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    color: wheat;
+    text-shadow: 0 2px 6px rgba(0,0,0,1); 
+}
+
+.footer-stats {
+    color: wheat;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+}
+
+.footer-stats .statistic {
+    text-align: center;
+}
+
+.footer-stats .value i {
+    color: wheat;
+    font-size: 2rem;
+}
+
+.footer-stats .label {
+    margin-top: 5px;
+    font-size: 1.1rem;
+    color: wheat;
+}
+
+.book-card {
+    background-color: rgb(245, 231, 208) !important;
+    color: rgb(20, 15, 9);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(40, 25, 10, 0.6) !important;
+}
+
+.genre-title {
+    color: wheat;
+    font-size: 1.4rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: serif;
+}
+
+.book-page {
+    max-width: 800px;
+    margin:auto;
+    text-align: center;
+    padding: 40px;
+}
+
+.book-title {
+    font-size: 2.6rem;
+    color: wheat;
+    margin-bottom: 10px;
+}
+
+.book-author {
+    font-size: 1.3rem;
+    color: wheat;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.book-description {
+    font-size: 1.2rem;
+    color: wheat;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.back-button {
+    color: wheat;
+    text-decoration: underline;
+    font-size: 1.1rem;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+.book-info-box {
+    background-color: rgb(20, 15, 9, 0.9);
+    border-radius: 16px;
+    padding: 20px 30px 30px 30px;
+    margin: 30px auto;
+    max-width: 700px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.9);
+}
+
+.book-info-box .book-author {
+    color: wheat;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.book-info-box .book-description {
+    color: wheat;
+    line-height: 1.7;
+}
+
+a:hover {
+    color: white;
+    text-shadow: 0 0 6px rgba(255,255,255,0.5);
+    transition: all 0.3s;
 }

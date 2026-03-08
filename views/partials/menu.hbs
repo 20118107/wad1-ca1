@@ -1,17 +1,20 @@
-<nav class="ui stackable menu">
-  
-  <header class="ui header item"> 
-    <!--     Change the link below to suit your app -->
-    <a href="/"> CA1 App </a>
-  </header>
-  
-  <div class="right menu">
-    <!--     Add links to your pages here -->
-    
-  </div>
-  
-</nav>
+<header class="site-header">
+
+  <a href="/dashboard" class="nav-link">Dashboard</a>
+
+  <a href="/" class="app-title">₊⊹The Library⊹₊</a>
+
+  <a href="/about" class="nav-link">About</a>
+
+</header>
+
+<div class="title-decoration">
+  ⏔⏔⏔⏔⏔⏔⏔⏔⏔꒰᧔ෆ᧓꒱⏔⏔⏔⏔⏔⏔⏔⏔⏔
+</div>
 
 <script>
- document.querySelector("#{{id}}").classList.add("active");
+const activeElement = document.querySelector("#{{id}}");
+if (activeElement) {
+  activeElement.classList.add("active");
+}
 </script>

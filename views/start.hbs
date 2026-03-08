@@ -1,11 +1,55 @@
 {{> menu}}
 
-<section class="ui center aligned middle aligned segment">
-  
-  <h2>Assignment One Starter App</h2>
+<section class="ui center aligned middle aligned segment welcome-section">
+  <h1>Welcome to The Library!</h1>
 
-  <p>
-    You can use this start view (along with the matching start controller and start route) as the starting point for your "welcome" view (i.e. your app's homepage). Read the assignment spec to see what other views you should add.
+  <p class="welcome-text">
+    Here you can store all of your favourite books, genres, and authors.
   </p>
 
+  <img src="books.jpg" alt="Stack of books" class="welcome-image" />
 </section>
+
+<footer class="footer-stats center aligned">
+  {{#with info}}
+    <div class="statistic">
+      <div class="value">
+        <i class="book icon"></i>
+      </div>
+      <div class="label">
+        App Title: <br>
+        {{appTitle}}
+      </div>
+    </div>
+
+    <div class="statistic">
+      <div class="value">
+        <i class="pencil icon"></i>
+      </div>
+      <div class="label">
+        Class Assignment: <br>
+        {{classAssignment}}
+      </div>
+    </div>
+
+    <div class="statistic">
+      <div class="value">
+        <i class="map pin icon"></i>
+      </div>
+      <div class="label">
+        Made in: <br>
+        {{location}}
+      </div>
+    </div>
+
+    <div class="statistic">
+      <div class="value">
+        <i class="user icon"></i>
+      </div>
+      <div class="label">
+        Created by: <br>
+        {{creator}}
+      </div>
+    </div>
+  {{/with}}
+</footer>

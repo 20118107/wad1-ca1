@@ -18,10 +18,12 @@ class JsonStore {
     return results;
   }
 
-  findOneBy(collection, filter) {
-    const results = this.db.data[collection].filter(filter);
-    return results[0];
-  }
+findOneBy(collection, criteria) {
+  const items = this.db.data[collection] || [];
+  const key = Object.keys(criteria)[0];
+  const value = criteria[key];
+  return items.find(item => item[key] === value);
+}
 
   async addCollection(collection, obj) {
     this.db.data[collection].push(obj);

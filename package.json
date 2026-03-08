@@ -1,7 +1,7 @@
 {
-  "name": "ca1-app",
+  "appTitle": "The Library",
   "version": "1.0.0",
-  "description": "CA1 starter app",
+  "description": "Book Storage Web App",
   "type": "module",
   "main": "server.js",
   "scripts": {
