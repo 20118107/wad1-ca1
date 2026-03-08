@@ -14,7 +14,6 @@ body {
   background-size: cover;       /* make it fill the screen */
   background-position: center;  /* center the image */
   background-repeat: no-repeat; /* don’t repeat the image */
-  font-family: serif;
   background-attachment: fixed;
 }
 
@@ -174,8 +173,17 @@ h1 {
     margin-bottom: 20px;
     text-align: center;
     font-family: serif;
+    text-decoration: underline;
 }
 
+.genre-label {
+    color: rgb(20, 15, 9);
+    font-size: 1.4rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: serif;
+}
 .book-page {
     max-width: 800px;
     margin:auto;
@@ -203,10 +211,16 @@ h1 {
     margin-bottom: 40px;
 }
 
+.back-button-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
 .back-button {
     color: wheat;
     text-decoration: underline;
     font-size: 1.1rem;
+    text-align: center;
 }
 
 .back-button:hover {
@@ -237,4 +251,71 @@ a:hover {
     color: white;
     text-shadow: 0 0 6px rgba(255,255,255,0.5);
     transition: all 0.3s;
+}
+
+.ui.button,
+.ui.basic.button {
+    background-color: rgb(245, 231, 208) !important; /* cream */
+    color: rgb(60, 30, 0) !important;              /* brown text */
+    border: 2px solid rgb(60, 30, 0) !important;
+}
+
+
+.about-section {
+    margin: 60px auto;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.about-layout {
+    display: flex;
+    align-items: stretch; 
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.about-image img {
+    width: 280px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.about-text-box {
+    background-color: rgba(20, 15, 9, 0.9);
+    padding: 30px;
+    border-radius: 18px;
+    max-width: 550px;
+    color: wheat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: serif;
+    font-size: 130%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.about-title {
+    font-family: serif;
+    margin-bottom: 15px;
+    text-decoration: underline;
+}
+
+.about-footer {
+    text-align: center;
+    color: wheat;
+    margin-top: 15px;
+    margin-bottom: 90px;
+    font-size: 130%;
+}
+
+.about-footer p {
+    margin: 4px 0;
 }

@@ -1,12 +1,25 @@
 {{> menu}}
 
-<section class="ui segment">
+<section class="about-section">
 
-<h1>About This Library</h1>
+  <div class="about-layout">
 
-<p class="welcome-text">
-This web app stores my favourite books and genres. It was built using
-Node.js, Express, Handlebars, and a JSON data store.
-</p>
+    <div class="about-image">
+      <img src="{{image}}" alt="Picture of maker">
+    </div>
+
+    <div class="about-text-box">
+      <h2 class="about-title">{{title}}</h2>
+      <p>{{text}}</p>
+    </div>
+
+  </div>
 
 </section>
+
+<footer class="about-footer">
+  <p>Contact Me:</p>
+  <p>Email: {{contact.email}}</p>
+  <p>Phone: {{contact.phone}}</p>
+  <p>Address: {{contact.address}}</p>
+</footer>

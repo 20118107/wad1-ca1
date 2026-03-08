@@ -1,0 +1,21 @@
+{{> menu}}
+
+<h2 class="genre-title">{{genre}} Collection</h2>
+
+<div class="ui cards">
+  {{#each books}}
+    <div class="book-card card">
+      <div class="content">
+        <div class="header">{{title}}</div>
+        <div class="meta">{{author}}</div>
+      </div>
+      <div class="extra content">
+        <a href="/book/{{id}}" class="ui button">View</a>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+<div class="back-button-container">
+  <a href="/dashboard" class="back-button">← Back to Dashboard</a>
+</div>

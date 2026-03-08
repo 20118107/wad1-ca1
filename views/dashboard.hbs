@@ -3,20 +3,16 @@
 <section class="ui segment">
   <h1>{{title}}</h1>
 
-{{#each genres}}
-  <h3 class="genre-title">{{@key}}</h3>
   <div class="ui cards">
-    {{#each this}}
+    {{#each genres}}
       <div class="book-card card">
         <div class="content">
-          <div class="header">{{this.title}}</div>
-          <div class="meta">{{this.author}}</div>
+<h3 class="genre-label">{{this}}</h3>
         </div>
         <div class="extra content">
-          <a href="/book/{{this.id}}">View</a>
+          <a href="/genre/{{this}}" class="ui button">View</a>
         </div>
       </div>
     {{/each}}
   </div>
-{{/each}}
 </section>
