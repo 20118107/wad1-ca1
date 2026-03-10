@@ -16,6 +16,11 @@
       "id": "02",
       "title": "Sci-Fi",
       "books": []
+    },
+    {
+      "id": "03",
+      "title": "Horror",
+      "books": []
     }
   ]
 }
