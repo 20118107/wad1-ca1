@@ -11,8 +11,7 @@ const aboutController = {
 
       image: '/maker.png',
       title: 'About Page',
-      text: `Hello! I'm Aedín, and welcome to my library app. This app can be used to store your favourite books
-and easily filter them by genre. If you want to contact me, my information is below. Thanks for using my library!`,
+      text: 'Hello! My name is Aedín, and welcome to my library app. This app can be used to store your favourite books and easily filter them by genre. If you want to contact me, my information is below. Thanks for using my library!',
 
       // footer contact info
       contact: {
