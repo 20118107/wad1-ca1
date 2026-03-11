@@ -15,7 +15,7 @@ const booksController = {
 
     // renders the genre view and displays books that apply
     res.render('genre', {
-      title: `${genreName} Books`,
+      title: '${genreName} Books',
       books
     });
   },
