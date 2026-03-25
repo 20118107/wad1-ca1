@@ -4,23 +4,5 @@
     "classAssignment": "One",
     "location": "Waterford",
     "creator": "Aedín McLarnon"
-  },
-
-  "genreCollection": [
-    {
-      "id": "01",
-      "title": "Fantasy",
-      "books": []
-    },
-    {
-      "id": "02",
-      "title": "Sci-Fi",
-      "books": []
-    },
-    {
-      "id": "03",
-      "title": "Horror",
-      "books": []
-    }
-  ]
+  }
 }

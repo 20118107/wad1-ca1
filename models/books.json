@@ -1,4 +1,22 @@
 {
+  "genreCollection": [
+    {
+      "id": "01",
+      "title": "Fantasy",
+      "books": []
+    },
+    {
+      "id": "02",
+      "title": "Sci-Fi",
+      "books": []
+    },
+    {
+      "id": "03",
+      "title": "Horror",
+      "books": []
+    }
+  ],
+
   "books": [
     { "id": "001", "title": "1984", "author": "George Orwell", "genre": "Sci-Fi", "description": "The novel focuses on Winston Smith, who works for the Ministry of Truth, a branch of the government responsible for the dissemination of information. Each day begins for all citizens with a Two Minutes' Hate session, which promotes fear and paranoia in order to ensure that people follow the wishes of Big Brother."},
     { "id": "002", "title": "The Hunger Games", "author": "Suzanne Collins", "genre": "Sci-Fi", "description": "As punishment for a failed rebellion 74 years earlier, each district must annually select two tributes, one boy and one girl between the ages of 12 to 18, to fight to the death in the Hunger Games until only one survivor remains. The event is televised nationwide."},
