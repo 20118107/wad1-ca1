@@ -1,19 +1,35 @@
 {{> menu}}
 
-<h2 class="genre-title">{{genre}} Collection</h2>
+<form class="ui stacked segment form" action="/genre/{{genre.id}}/addbook" method="POST">
+  <input type="hidden" name="genreName" value="{{genre.title}}">
+  <div class="two fields">
+    <div class="field">
+      <input placeholder="Book Title" type="text" name="title" required>
+    </div>
+    <div class="field">
+      <input placeholder="Author" type="text" name="author" required>
+    </div>
+  </div>
+  <button class="ui blue submit button">Add Book</button>
+</form>
+
+<h2 class="genre-title">{{genre.title}} Collection</h2>
 
 <div class="ui cards">
-  {{#each books}}
-    <div class="book-card card">
-      <div class="content">
-        <div class="header">{{title}}</div>
-        <div class="meta">{{author}}</div>
-      </div>
-      <div class="extra content">
-        <a href="/book/{{id}}" class="ui button">View</a>
-      </div>
+{{#each books}}
+  <div class="book-card card">
+    <div class="content">
+      <div class="header">{{title}}</div>
+      <div class="meta">{{author}}</div>
     </div>
-  {{/each}}
+    <div class="extra content">
+      <a href="/book/{{id}}" class="ui button">View</a>
+      <a href="/genre/{{../genre.id}}/deletebook/{{id}}" class="ui red button">
+        Delete
+      </a>
+    </div>
+  </div>
+{{/each}}
 </div>
 
 <div class="back-button-container">

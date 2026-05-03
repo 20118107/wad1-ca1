@@ -1,28 +1,52 @@
-import booksStore from '../models/books-store.js';
+import appStore from "../models/app-store.js";
+import { v4 as uuidv4 } from "uuid";
 
-// controller for showing all books in a specific genre
 const genreController = {
+
   createView(req, res) {
-    // gets the genre from the URL parameter
+
     const genreName = req.params.genre;
 
-    // get all books from the store
-    const allBooks = booksStore.getAllBooks();
+    const genres = appStore.getAllGenres();
 
-    // filter books to only include ones match the genre
-    const booksInGenre = allBooks.filter(book => book.genre === genreName);
+    const genre = genres.find(g => g.title === genreName);
 
-    // gets data to pass to template
     const viewData = {
       title: `${genreName} Books`,
-      genre: genreName,
-      books: booksInGenre
+      genre: genre,
+      books: genre.books
     };
 
-    // renders the genre view and passes the data
     res.render('genre', viewData);
+  },
+
+  addBook(req, res) {
+
+    const genreId = req.params.id;
+
+    const newBook = {
+      id: uuidv4(),
+      title: req.body.title,
+      author: req.body.author
+    };
+
+    appStore.store.addItem("genreCollection", genreId, "books", newBook);
+
+    res.redirect("/genre/" + req.body.genreName);
+  },   // ✅ comma fixed
+
+  deleteBook(req, res) {
+
+    const genreId = req.params.id;
+    const bookId = req.params.bookid;
+
+    const genre = appStore.getGenre(genreId);
+
+    appStore.store.removeItem("genreCollection", genreId, "books", bookId);
+
+    res.redirect("/genre/" + genre.title);
   }
+
 };
 
-// export controller so it can be used in routes
 export default genreController;

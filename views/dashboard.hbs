@@ -3,16 +3,26 @@
 <section class="ui segment">
   <h1>{{title}}</h1>
 
+  <form class="ui stacked segment form" action="/dashboard/addgenre" method="POST">
+    <div class="field">
+      <input placeholder="Genre Name" type="text" name="title" required>
+    </div>
+    <button class="ui blue submit button">Add Genre</button>
+  </form>
+
   <div class="ui cards">
     {{#each genres}}
       <div class="book-card card">
         <div class="content">
-<h3 class="genre-label">{{this}}</h3>
+          <h3 class="genre-label">{{title}}</h3>
         </div>
+
         <div class="extra content">
-          <a href="/genre/{{this}}" class="ui button">View</a>
+          <a href="/genre/{{title}}" class="ui button">View</a>
+          <a href="/dashboard/deletegenre/{{id}}" class="ui red button">Delete</a>
         </div>
       </div>
     {{/each}}
   </div>
+
 </section>

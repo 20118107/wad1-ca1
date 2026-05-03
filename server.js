@@ -13,9 +13,8 @@ app.use(express.static("public"));
 const handlebars = create({extname: '.hbs'});
 app.engine(".hbs", handlebars.engine);
 app.set("view engine", ".hbs");
-
 app.use(express.static("public"));
-
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 app.use("/", routes);
-
 app.listen(port, () => logger.info('Your app is listening on port ${port}'));
