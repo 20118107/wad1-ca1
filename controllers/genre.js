@@ -25,9 +25,10 @@ const genreController = {
     const genreId = req.params.id;
 
     const newBook = {
-      id: uuidv4(),
-      title: req.body.title,
-      author: req.body.author
+     id: uuidv4(),
+     title: req.body.title,
+     author: req.body.author,
+     description: ""
     };
 
     appStore.store.addItem("genreCollection", genreId, "books", newBook);
@@ -63,7 +64,8 @@ editBook(req, res) {
   const genre = appStore.getGenre(genreId);
 
   res.redirect("/genre/" + genre.title);
-}
+},
+
 
 };
 

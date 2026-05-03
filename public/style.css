@@ -325,3 +325,31 @@ a:hover {
   text-align: center;
   margin-top: 5px;
 }
+
+.book-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-actions .ui.button {
+  margin: 0;
+}
+
+.book-actions {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.book-actions > :first-child {
+  justify-self: start; 
+}
+
+.book-actions > :nth-child(2) {
+  justify-self: center; 
+}
+
+.book-actions > :last-child {
+  justify-self: end;
+}

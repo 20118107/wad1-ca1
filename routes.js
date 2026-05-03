@@ -22,6 +22,7 @@ router.get("/dashboard/deletegenre/:id", dashboard.deleteGenre);
 router.post("/genre/:id/addbook", genreController.addBook);
 router.get("/genre/:id/deletebook/:bookid", genreController.deleteBook);
 router.post("/genre/:id/editbook/:bookid", genreController.editBook);
+router.post("/book/:id/updatedescription", booksController.updateDescription);
 
 export default router;
 

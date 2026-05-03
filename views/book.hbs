@@ -4,16 +4,58 @@
 
   <h1 class="book-title">{{book.title}}</h1>
 
-  <div class="book-info-box">
+  <!-- DISPLAY MODE -->
+  <div id="displayBox">
+
+    <div class="book-info-box">
       <h3 class="book-author">by {{book.author}}</h3>
 
       <p class="book-description">
-        {{book.description}}
+        {{#if book.description}}
+          {{book.description}}
+        {{else}}
+          <em>No description yet</em>
+        {{/if}}
       </p>
+    </div>
+
+    <button onclick="showEdit()" class="ui icon button">
+      <i class="pencil icon"></i>
+    </button>
+
   </div>
 
-<div class="back-button-container">
-  <a href="/dashboard" class="back-button">← Back to Dashboard</a>
-</div>
+  <!-- EDIT MODE -->
+  <div id="editBox" style="display:none;">
+
+    <form action="/book/{{book.id}}/updatedescription" method="POST" class="ui form">
+
+      <div class="field">
+        <textarea name="description">{{book.description}}</textarea>
+      </div>
+
+      <button class="ui green button" type="submit">Save</button>
+      <button type="button" onclick="hideEdit()" class="ui button">Cancel</button>
+
+    </form>
+
+  </div>
+
+  <div class="back-button-container">
+    <a href="/genre/{{genre.title}}" class="back-button"> ← Back to {{genre.title}}
+</a>
+  </div>
+
+  <script>
+    function showEdit() {
+      document.getElementById("displayBox").style.display = "none";
+      document.getElementById("editBox").style.display = "block";
+    }
+
+    function hideEdit() {
+      document.getElementById("displayBox").style.display = "block";
+      document.getElementById("editBox").style.display = "none";
+    }
+  </script>
 
 </section>

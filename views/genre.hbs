@@ -23,20 +23,28 @@
         <p>{{author}}</p>
       </div>
 
-      <div class="extra content">
-        <button onclick="showEdit('{{id}}', '{{title}}', '{{author}}')" class="ui button">
-          Edit
+      <div class="extra content book-actions">
+
+
+        <button onclick="showEdit('{{id}}', '{{title}}', '{{author}}')" class="ui icon button">
+          <i class="pencil icon"></i>
         </button>
 
-        <a href="/genre/{{../genre.id}}/deletebook/{{id}}" class="ui button">
-          Delete
+
+        <a href="/book/{{id}}" class="ui button">
+          View
         </a>
+
+        <a href="/genre/{{../genre.id}}/deletebook/{{id}}" class="ui icon button">
+          <i class="trash icon"></i>
+        </a>
+
       </div>
     </div>
   {{/each}}
 </div>
 
-<!-- EDIT FORM (outside cards) -->
+
 <div id="editForm" style="display:none; margin-top:30px;" class="ui segment">
 
   <form id="editBookForm" method="POST" class="ui form">
