@@ -15,36 +15,80 @@
 
 <h2 class="genre-title">{{genre.title}} Collection</h2>
 
+<form method="GET" action="/genre/{{genre.title}}" class="ui form sort-form">
+
+  <div class="field">
+    <input
+      type="text"
+      name="searchTerm"
+      placeholder="Search by title..."
+      value="{{search}}">
+  </div>
+</form>
+
+<form method="GET" action="/genre/{{genre.title}}" class="ui form sort-form" style="margin-bottom:20px;">
+  <div class="two fields">
+
+    <div class="field">
+      <label>Sort By</label>
+      <select name="sort" onchange="this.form.submit()">
+        <option value="">None</option>
+        <option value="title" {{#if titleSelected}}selected{{/if}}>Title</option>
+        <option value="rating" {{#if ratingSelected}}selected{{/if}}>Rating</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Order</label>
+      <select name="order" onchange="this.form.submit()">
+        <option value="asc" {{#if ascSelected}}selected{{/if}}>Ascending</option>
+        <option value="desc" {{#if descSelected}}selected{{/if}}>Descending</option>
+      </select>
+    </div>
+
+  </div>
+</form>
+
 <div class="ui cards">
   {{#each books}}
     <div class="book-card card">
+
       <div class="content">
         <h3 class="genre-label">{{title}}</h3>
         <p>{{author}}</p>
+
+        <span 
+          class="ui yellow disabled rating"
+          data-icon="star"
+          data-rating="{{rating}}"
+          data-max-rating="5">
+        </span>
       </div>
 
       <div class="extra content book-actions">
 
-
-        <button onclick="showEdit('{{id}}', '{{title}}', '{{author}}')" class="ui icon button">
+        <!-- EDIT -->
+        <button onclick="showEdit('{{id}}', '{{title}}', '{{author}}', '{{rating}}')" class="ui icon button">
           <i class="pencil icon"></i>
         </button>
 
-
+        <!-- VIEW -->
         <a href="/book/{{id}}" class="ui button">
           View
         </a>
 
+        <!-- DELETE -->
         <a href="/genre/{{../genre.id}}/deletebook/{{id}}" class="ui icon button">
           <i class="trash icon"></i>
         </a>
 
       </div>
+
     </div>
   {{/each}}
 </div>
 
-
+<!-- EDIT FORM -->
 <div id="editForm" style="display:none; margin-top:30px;" class="ui segment">
 
   <form id="editBookForm" method="POST" class="ui form">
@@ -59,6 +103,7 @@
       </div>
     </div>
 
+    
     <button class="ui green button" type="submit">Save</button>
     <button type="button" onclick="hideEdit()" class="ui button">Cancel</button>
 
@@ -75,6 +120,14 @@
 
     document.getElementById("editTitle").value = title;
     document.getElementById("editAuthor").value = author;
+
+    $('#ratingInput').rating('set rating', rating || 0);
+
+    $('#ratingInput').rating({
+      onRate: function(value) {
+        document.getElementById("ratingValue").value = value;
+      }
+    });
   }
 
   function hideEdit() {

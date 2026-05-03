@@ -35,28 +35,34 @@ updateDescription(req, res) {
 
   const genres = appStore.getAllGenres();
 
-  let genreFound = null;
-  let bookIndex = -1;
+  let foundBook = null;
+  let genre = null;
 
-  for (const genre of genres) {
-    const index = genre.books.findIndex(b => b.id === bookId);
-    if (index !== -1) {
-      genreFound = genre;
-      bookIndex = index;
+
+  for (const g of genres) {
+    const b = g.books.find(book => book.id === bookId);
+    if (b) {
+      foundBook = b;
+      genre = g;
       break;
     }
   }
+
+
   const updatedBook = {
-    ...genreFound.books[bookIndex],
-    description: req.body.description
+    ...foundBook,
+    description: req.body.description,
+    rating: Number(req.body.rating) || foundBook.rating
   };
+
   appStore.store.editItem(
     "genreCollection",
-    genreFound.id,
+    genre.id,
     bookId,
     "books",
     updatedBook
   );
+
   res.redirect("/book/" + bookId);
 }
 

@@ -353,3 +353,52 @@ a:hover {
 .book-actions > :last-child {
   justify-self: end;
 }
+
+.book-card .ui.rating {
+  display: block;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.book-card .ui.rating .icon {
+  color: rgba(60, 30, 0, 0.3) !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.book-card .ui.rating .icon.active,
+.book-card .ui.rating .icon.selected {
+  color: rgb(60, 30, 0) !important;
+}
+
+.book-page .ui.rating {
+  margin-bottom: 15px;
+}
+
+.book-page .ui.rating .icon {
+  color: rgba(255, 255, 255, 0.3) !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.book-page .ui.rating .icon.active,
+.book-page .ui.rating .icon.selected {
+  color: wheat !important;
+}
+
+#ratingInput .icon {
+  color: rgba(255, 255, 255, 0.3) !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+#ratingInput .icon.active,
+#ratingInput .icon.selected {
+  color: wheat !important;
+}
+
+.ui.form.sort-form .field > label {
+  color: wheat !important;
+  font-size: 1.3rem;
+  text-shadow: 0 0 4px rgba(255,255,255,0.2);
+}

@@ -4,7 +4,6 @@
 
   <h1 class="book-title">{{book.title}}</h1>
 
-  <!-- DISPLAY MODE -->
   <div id="displayBox">
 
     <div class="book-info-box">
@@ -19,27 +18,41 @@
       </p>
     </div>
 
+<div style="margin-top:10px; text-align:center;">
+  <span 
+    class="ui yellow disabled rating"
+    data-icon="star"
+    data-rating="{{book.rating}}"
+    data-max-rating="5">
+  </span>
+</div>
+
     <button onclick="showEdit()" class="ui icon button">
       <i class="pencil icon"></i>
     </button>
 
   </div>
 
-  <!-- EDIT MODE -->
   <div id="editBox" style="display:none;">
 
-    <form action="/book/{{book.id}}/updatedescription" method="POST" class="ui form">
+  <form action="/book/{{book.id}}/updatedescription" method="POST" class="ui form">
 
-      <div class="field">
-        <textarea name="description">{{book.description}}</textarea>
-      </div>
+    <div class="field">
+      <textarea name="description">{{book.description}}</textarea>
+    </div>
 
-      <button class="ui green button" type="submit">Save</button>
-      <button type="button" onclick="hideEdit()" class="ui button">Cancel</button>
+    <div class="field">
+      <label>Rating</label>
+      <div class="ui rating" id="ratingInput" data-max-rating="5"></div>
+      <input type="hidden" name="rating" id="ratingValue">
+    </div>
 
-    </form>
+    <button class="ui green button" type="submit">Save</button>
+    <button type="button" onclick="hideEdit()" class="ui button">Cancel</button>
 
-  </div>
+  </form>
+
+</div>
 
   <div class="back-button-container">
     <a href="/genre/{{genre.title}}" class="back-button"> ← Back to {{genre.title}}
@@ -47,15 +60,23 @@
   </div>
 
   <script>
-    function showEdit() {
-      document.getElementById("displayBox").style.display = "none";
-      document.getElementById("editBox").style.display = "block";
-    }
+  function showEdit() {
+    document.getElementById("displayBox").style.display = "none";
+    document.getElementById("editBox").style.display = "block";
 
-    function hideEdit() {
-      document.getElementById("displayBox").style.display = "block";
-      document.getElementById("editBox").style.display = "none";
-    }
-  </script>
+    $('#ratingInput').rating('set rating', {{book.rating}} || 0);
+
+    $('#ratingInput').rating({
+      onRate: function(value) {
+        document.getElementById("ratingValue").value = value;
+      }
+    });
+  }
+
+  function hideEdit() {
+    document.getElementById("displayBox").style.display = "block";
+    document.getElementById("editBox").style.display = "none";
+  }
+</script>
 
 </section>

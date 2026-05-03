@@ -19,7 +19,17 @@ const appStore = {
 
   getGenre(id) {
     return this.store.findOneBy('genreCollection', genre => genre.id === id);
-  }
+  },
+
+searchBooks(genreId, searchTerm) {
+
+  const genre = this.getGenre(genreId);
+
+  return genre.books.filter(book =>
+    book.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+}
+
 
 };
 
