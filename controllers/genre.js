@@ -45,7 +45,25 @@ const genreController = {
     appStore.store.removeItem("genreCollection", genreId, "books", bookId);
 
     res.redirect("/genre/" + genre.title);
-  }
+  },
+
+editBook(req, res) {
+
+  const genreId = req.params.id;
+  const bookId = req.params.bookid;
+
+  const updatedBook = {
+    id: bookId,
+    title: req.body.title,
+    author: req.body.author
+  };
+
+  appStore.store.editItem("genreCollection", genreId, bookId, "books", updatedBook);
+
+  const genre = appStore.getGenre(genreId);
+
+  res.redirect("/genre/" + genre.title);
+}
 
 };
 

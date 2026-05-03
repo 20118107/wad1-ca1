@@ -16,21 +16,63 @@
 <h2 class="genre-title">{{genre.title}} Collection</h2>
 
 <div class="ui cards">
-{{#each books}}
-  <div class="book-card card">
-    <div class="content">
-      <div class="header">{{title}}</div>
-      <div class="meta">{{author}}</div>
+  {{#each books}}
+    <div class="book-card card">
+      <div class="content">
+        <h3 class="genre-label">{{title}}</h3>
+        <p>{{author}}</p>
+      </div>
+
+      <div class="extra content">
+        <button onclick="showEdit('{{id}}', '{{title}}', '{{author}}')" class="ui button">
+          Edit
+        </button>
+
+        <a href="/genre/{{../genre.id}}/deletebook/{{id}}" class="ui button">
+          Delete
+        </a>
+      </div>
     </div>
-    <div class="extra content">
-      <a href="/book/{{id}}" class="ui button">View</a>
-      <a href="/genre/{{../genre.id}}/deletebook/{{id}}" class="ui red button">
-        Delete
-      </a>
-    </div>
-  </div>
-{{/each}}
+  {{/each}}
 </div>
+
+<!-- EDIT FORM (outside cards) -->
+<div id="editForm" style="display:none; margin-top:30px;" class="ui segment">
+
+  <form id="editBookForm" method="POST" class="ui form">
+
+    <div class="two fields">
+      <div class="field">
+        <input type="text" name="title" id="editTitle" required>
+      </div>
+
+      <div class="field">
+        <input type="text" name="author" id="editAuthor" required>
+      </div>
+    </div>
+
+    <button class="ui green button" type="submit">Save</button>
+    <button type="button" onclick="hideEdit()" class="ui button">Cancel</button>
+
+  </form>
+
+</div>
+
+<script>
+  function showEdit(id, title, author) {
+    document.getElementById("editForm").style.display = "block";
+
+    document.getElementById("editBookForm").action =
+      "/genre/{{genre.id}}/editbook/" + id;
+
+    document.getElementById("editTitle").value = title;
+    document.getElementById("editAuthor").value = author;
+  }
+
+  function hideEdit() {
+    document.getElementById("editForm").style.display = "none";
+  }
+</script>
 
 <div class="back-button-container">
   <a href="/dashboard" class="back-button">← Back to Dashboard</a>

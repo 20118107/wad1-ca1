@@ -166,6 +166,7 @@ h1 {
     box-shadow: 0 4px 8px rgba(40, 25, 10, 0.6) !important;
 }
 
+
 .genre-title {
     color: wheat;
     font-size: 1.4rem;
@@ -318,4 +319,9 @@ a:hover {
 
 .about-footer p {
     margin: 4px 0;
+}
+
+.book-card p {
+  text-align: center;
+  margin-top: 5px;
 }
