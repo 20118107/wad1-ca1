@@ -33,7 +33,7 @@ const genreController = {
     appStore.store.addItem("genreCollection", genreId, "books", newBook);
 
     res.redirect("/genre/" + req.body.genreName);
-  },   // ✅ comma fixed
+  },
 
   deleteBook(req, res) {
 
