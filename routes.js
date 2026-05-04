@@ -31,4 +31,3 @@ router.get("/logout", accountsController.logout);
 router.get("/start", start.createView);
 
 export default router;
-
