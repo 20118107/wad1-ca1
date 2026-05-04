@@ -1,115 +1,135 @@
-import appStore from "../models/app-store.js";
 import { v4 as uuidv4 } from "uuid";
+import accountsController from "./accounts.js";
 
 const genreController = {
+
   createView(req, res) {
 
-  const genreName = req.params.genre;
-  const genres = appStore.getAllGenres();
-  const genre = genres.find(g => g.title === genreName);
+    const loggedInUser = accountsController.getCurrentUser(req);
 
-  const sortField = req.query.sort;
-  const order = req.query.order === "desc" ? -1 : 1;
+    if (!loggedInUser) {
+      return res.redirect("/login");
+    }
 
-  const searchTerm = req.query.searchTerm || "";
+    const genreName = req.params.genre;
 
-  let books;
+    const genres = loggedInUser.genres || [];
+    const genre = genres.find(g => g.title === genreName);
 
-  if (searchTerm) {
-    books = appStore.searchBooks(genre.id, searchTerm);
-  } else {
-    books = genre.books;
-  }
+    const sortField = req.query.sort;
+    const order = req.query.order === "desc" ? -1 : 1;
 
-  if (sortField) {
-    books = books.slice().sort((a, b) => {
+    const searchTerm = req.query.searchTerm || "";
 
-      if (sortField === "title") {
-        return a.title.localeCompare(b.title) * order;
-      }
+    let books = genre.books;
 
-      if (sortField === "rating") {
-        return (a.rating - b.rating) * order;
-      }
+    if (searchTerm) {
+      books = genre.books.filter(b =>
+        b.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
 
-      return 0;
-    });
-  }
+    if (sortField) {
+      books = books.slice().sort((a, b) => {
 
-  const viewData = {
-    title: `${genreName} Books`,
-    genre: genre,
-    books: books,
+        if (sortField === "title") {
+          return a.title.localeCompare(b.title) * order;
+        }
 
-    titleSelected: sortField === "title",
-    ratingSelected: sortField === "rating",
-    ascSelected: req.query.order === "asc",
-    descSelected: req.query.order === "desc",
+        if (sortField === "rating") {
+          return (a.rating - b.rating) * order;
+        }
 
-    search: searchTerm
-  };
+        return 0;
+      });
+    }
 
-  res.render("genre", viewData);
-},
+    const viewData = {
+      title: `${genreName} Books`,
+      genre: genre,
+      books: books,
+
+      titleSelected: sortField === "title",
+      ratingSelected: sortField === "rating",
+      ascSelected: req.query.order === "asc",
+      descSelected: req.query.order === "desc",
+
+      search: searchTerm
+    };
+
+    res.render("genre", viewData);
+  },
 
   addBook(req, res) {
 
+    const loggedInUser = accountsController.getCurrentUser(req);
+
+    if (!loggedInUser) {
+      return res.redirect("/login");
+    }
+
     const genreId = req.params.id;
+
+    const genre = loggedInUser.genres.find(g => g.id === genreId);
 
     const newBook = {
-     id: uuidv4(),
-     title: req.body.title,
-     author: req.body.author,
-     description: "",
-     rating: 3
+      id: uuidv4(),
+      title: req.body.title,
+      author: req.body.author,
+      description: "",
+      rating: 3
     };
 
-    appStore.store.addItem("genreCollection", genreId, "books", newBook);
-
-    res.redirect("/genre/" + req.body.genreName);
-  },
-
-  deleteBook(req, res) {
-
-    const genreId = req.params.id;
-    const bookId = req.params.bookid;
-
-    const genre = appStore.getGenre(genreId);
-
-    appStore.store.removeItem("genreCollection", genreId, "books", bookId);
+    genre.books.push(newBook);
 
     res.redirect("/genre/" + genre.title);
   },
 
-editBook(req, res) {
+  deleteBook(req, res) {
 
-  const genreId = req.params.id;
-  const bookId = req.params.bookid;
+    const loggedInUser = accountsController.getCurrentUser(req);
 
-  const genre = appStore.getGenre(genreId);
+    if (!loggedInUser) {
+      return res.redirect("/login");
+    }
 
-  const book = genre.books.find(b => b.id === bookId);
+    const genreId = req.params.id;
+    const bookId = req.params.bookid;
 
-  const updatedBook = {
-  ...book,
-  title: req.body.title,
-  author: req.body.author,
-  rating: Number(req.body.rating) || book.rating
-};
+    const genre = loggedInUser.genres.find(g => g.id === genreId);
 
-  appStore.store.editItem(
-    "genreCollection",
-    genreId,
-    bookId,
-    "books",
-    updatedBook
-  );
+    genre.books = genre.books.filter(b => b.id !== bookId);
 
-  res.redirect("/genre/" + genre.title);
-},
+    res.redirect("/genre/" + genre.title);
+  },
 
+  editBook(req, res) {
 
+    const loggedInUser = accountsController.getCurrentUser(req);
 
+    if (!loggedInUser) {
+      return res.redirect("/login");
+    }
+
+    const genreId = req.params.id;
+    const bookId = req.params.bookid;
+
+    const genre = loggedInUser.genres.find(g => g.id === genreId);
+
+    const book = genre.books.find(b => b.id === bookId);
+
+    const updatedBook = {
+      ...book,
+      title: req.body.title,
+      author: req.body.author,
+      rating: Number(req.body.rating) || book.rating
+    };
+
+    const index = genre.books.findIndex(b => b.id === bookId);
+    genre.books[index] = updatedBook;
+
+    res.redirect("/genre/" + genre.title);
+  }
 
 };
 

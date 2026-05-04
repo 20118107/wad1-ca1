@@ -17,7 +17,9 @@ const accountsController = {
 
   register(req, res) {
 
-    const existingUser = userStore.getUserByEmail(req.body.email);
+    const email = req.body.email.toLowerCase();
+
+    const existingUser = userStore.getUserByEmail(email);
 
     if (existingUser) {
       return res.render("signup", {
@@ -37,20 +39,21 @@ const accountsController = {
       !password.match(/[0-9]/)
     ) {
       return res.render("signup", {
-  title: "Sign Up",
-  error: "Password must be at least 6 characters, include a capital letter and a number",
-  firstName: req.body.firstName,
-  lastName: req.body.lastName,
-  email: req.body.email
-});
+        title: "Sign Up",
+        error: "Password must be at least 6 characters, include a capital letter and a number",
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email
+      });
     }
 
     const user = {
       id: uuidv4(),
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      email: req.body.email,
-      password: password
+      email: email,
+      password: password,
+      genres: []
     };
 
     userStore.addUser(user);
@@ -59,11 +62,14 @@ const accountsController = {
   },
 
   authenticate(req, res) {
-    const user = userStore.getUserByEmail(req.body.email);
+
+    const email = req.body.email.toLowerCase();
+
+    const user = userStore.getUserByEmail(email);
 
     if (user && user.password === req.body.password) {
 
-      res.cookie("library", user.email);
+      res.cookie("library", email, { path: "/" });
 
       return res.redirect("/start");
     } else {
@@ -72,10 +78,18 @@ const accountsController = {
   },
 
   getCurrentUser(req) {
+
     if (!req.cookies || !req.cookies.library) return null;
 
-    const userEmail = req.cookies.library;
-    return userStore.getUserByEmail(userEmail);
+    const userEmail = req.cookies.library.toLowerCase();
+
+    const user = userStore.getUserByEmail(userEmail);
+
+    console.log("COOKIE:", req.cookies);
+    console.log("EMAIL:", userEmail);
+    console.log("FOUND USER:", user);
+
+    return user;
   },
 
   logout(req, res) {

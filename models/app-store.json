@@ -7,11 +7,26 @@
   },
   "userCollection": [
     {
-      "id": "35335db0-6293-46fb-8609-0759d0b64721",
+      "id": "3705baf9-097e-4385-9454-c00b4fa71171",
+      "firstName": "John",
+      "lastName": "Cena",
+      "email": "johncena@gmail.com",
+      "password": "Johncena1",
+      "genres": [
+        {
+          "id": "b9685dca-04d5-41a2-a9e9-16ce61006c97",
+          "title": "Fantasy",
+          "books": []
+        }
+      ]
+    },
+    {
+      "id": "33924234-5524-4a6a-916c-f05ec2f7ff5d",
       "firstName": "Aedín",
       "lastName": "McLarnon",
       "email": "aedinmclarnon@gmail.com",
-      "password": "Aedin1"
+      "password": "Aedin1",
+      "genres": []
     }
   ],
   "genreCollection": []
