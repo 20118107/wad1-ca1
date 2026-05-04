@@ -4,10 +4,12 @@ import express from 'express';
 import routes from "./routes.js";
 import logger from "./utils/logger.js";
 import { create } from 'express-handlebars';
+import cookieParser from "cookie-parser";
 
 const app = express();
 const port = 3000;
 
+app.use(cookieParser());
 app.use(express.static("public"));
 
 const handlebars = create({extname: '.hbs'});

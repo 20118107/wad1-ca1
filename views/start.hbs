@@ -1,7 +1,9 @@
 {{> menu}}
 
 <section class="ui center aligned middle aligned segment welcome-section">
-  <h1>Welcome to The Library!</h1>
+  <h1>
+  Welcome to The Library{{#if user}}, {{user.firstName}}{{/if}}!
+</h1>
 
   <p class="welcome-text">
     Here you can store all of your favourite books, genres, and authors.

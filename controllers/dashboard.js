@@ -1,19 +1,27 @@
 import appStore from "../models/app-store.js";
 import { v4 as uuidv4 } from "uuid";
+import accountsController from "./accounts.js";
 
 const dashboardController = {
 
-  createView(request, response) {
+  createView(req, res) {
 
-    const genres = appStore.getAllGenres();
+  const loggedInUser = accountsController.getCurrentUser(req);
 
-    const viewData = {
-      title: 'Library Dashboard',
-      genres: genres
-    };
+  if (!loggedInUser) {
+    return res.redirect("/login");
+  }
 
-    response.render('dashboard', viewData);
-  },
+  const genres = appStore.getAllGenres();
+
+  const viewData = {
+    title: 'Library Dashboard',
+    genres: genres,
+    user: loggedInUser
+  };
+
+  res.render('dashboard', viewData);
+},
 
   addGenre(request, response) {
 
@@ -26,7 +34,7 @@ const dashboardController = {
     appStore.store.addCollection("genreCollection", newGenre);
 
     response.redirect("/dashboard");
-  },   // ✅ THIS COMMA WAS MISSING
+  },
 
   deleteGenre(request, response) {
 
@@ -37,7 +45,8 @@ const dashboardController = {
     appStore.store.removeCollection("genreCollection", genre);
 
     response.redirect("/dashboard");
-  }
+  },
+
 
 };
 

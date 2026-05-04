@@ -1,0 +1,52 @@
+{{> welcomemenu}}
+
+<div class="welcome-container">
+  <div class="welcome-card">
+
+    <h2 class="welcome-title">Create Account</h2>
+
+{{#if error}}
+  <div class="ui red message">
+    {{error}}
+  </div>
+{{/if}}
+
+    <form class="ui form" action="/register" method="POST">
+
+  <div class="two fields">
+    <div class="field">
+      <input 
+        name="firstName" 
+        placeholder="First Name" 
+        value="{{firstName}}" 
+        required>
+    </div>
+
+    <div class="field">
+      <input 
+        name="lastName" 
+        placeholder="Last Name" 
+        value="{{lastName}}" 
+        required>
+    </div>
+  </div>
+
+  <div class="field">
+    <input 
+      name="email" 
+      placeholder="Email" 
+      value="{{email}}" 
+      required>
+  </div>
+
+  <div class="field">
+    <input 
+      type="password" 
+      name="password" 
+      placeholder="Password" 
+      required>
+  </div>
+
+  <button class="ui button">Register</button>
+
+</form>

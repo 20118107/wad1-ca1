@@ -5,11 +5,14 @@
     "location": "Waterford",
     "creator": "Aedín McLarnon"
   },
-  "genreCollection": [
+  "userCollection": [
     {
-      "id": "aba75abd-8afb-4151-9980-5b0fe2a75309",
-      "title": "Romance",
-      "books": []
+      "id": "35335db0-6293-46fb-8609-0759d0b64721",
+      "firstName": "Aedín",
+      "lastName": "McLarnon",
+      "email": "aedinmclarnon@gmail.com",
+      "password": "Aedin1"
     }
-  ]
+  ],
+  "genreCollection": []
 }

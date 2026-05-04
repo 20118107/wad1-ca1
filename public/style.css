@@ -402,3 +402,49 @@ a:hover {
   font-size: 1.3rem;
   text-shadow: 0 0 4px rgba(255,255,255,0.2);
 }
+
+
+
+/* ========================= */
+/* WELCOME / AUTH PAGES */
+/* ========================= */
+
+.welcome-container {
+  max-width: 600px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.welcome-card {
+  background-color: rgba(20, 15, 9, 0.9);
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.9);
+}
+
+.welcome-title {
+  color: wheat;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-decoration: underline;
+}
+
+.welcome-card .ui.header {
+  color: wheat !important;
+  font-family: serif;
+}
+
+/* inputs */
+.welcome-card input {
+  text-align: center;
+}
+
+/* buttons */
+.welcome-card .ui.button {
+  margin-top: 10px;
+}
+
+/* spacing between fields */
+.welcome-card .field {
+  margin-bottom: 15px;
+}
