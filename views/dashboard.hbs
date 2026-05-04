@@ -3,6 +3,25 @@
 <section class="ui segment">
   <h1>{{title}}</h1>
 
+<div class="dashboard-stats">
+
+  <div class="stat">
+    <div class="value">{{stats.displayNumGenres}}</div>
+    <div class="label">Genres</div>
+  </div>
+
+  <div class="stat">
+    <div class="value">{{stats.displayNumBooks}}</div>
+    <div class="label">Books</div>
+  </div>
+
+  <div class="stat">
+    <div class="value">{{stats.displayAverage}}</div>
+    <div class="label">Avg Books</div>
+  </div>
+
+</div>
+
   <form class="ui stacked segment form" action="/dashboard/addgenre" method="POST">
     <div class="field">
       <input placeholder="Genre Name" type="text" name="title" required>

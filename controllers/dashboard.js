@@ -8,11 +8,24 @@ const dashboardController = {
       return res.redirect("/login");
     }
     const genres = loggedInUser.genres || [];
+const numGenres = genres.length;
+
+const numBooks = genres.reduce(
+  (total, genre) => total + genre.books.length,
+  0
+);
+const avgBooks = numGenres > 0 ? numBooks / numGenres : 0;
     const viewData = {
-      title: 'Library Dashboard',
-      genres: genres,
-      user: loggedInUser
-    };
+  title: 'Library Dashboard',
+  genres: genres,
+  user: loggedInUser,
+
+  stats: {
+    displayNumGenres: numGenres,
+    displayNumBooks: numBooks,
+    displayAverage: avgBooks.toFixed(2)
+  }
+};
     res.render('dashboard', viewData);
   },
 

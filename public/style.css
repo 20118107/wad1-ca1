@@ -403,12 +403,6 @@ a:hover {
   text-shadow: 0 0 4px rgba(255,255,255,0.2);
 }
 
-
-
-/* ========================= */
-/* WELCOME / AUTH PAGES */
-/* ========================= */
-
 .welcome-container {
   max-width: 600px;
   margin: 80px auto;
@@ -434,17 +428,42 @@ a:hover {
   font-family: serif;
 }
 
-/* inputs */
 .welcome-card input {
   text-align: center;
 }
 
-/* buttons */
 .welcome-card .ui.button {
   margin-top: 10px;
 }
 
-/* spacing between fields */
 .welcome-card .field {
   margin-bottom: 15px;
+}
+
+.dashboard-stats {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin: 30px 0;
+  text-align: center;
+}
+
+.dashboard-stats .stat {
+  background-color: rgba(20, 15, 9, 0.9);
+  padding: 20px 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+  min-width: 120px;
+}
+
+.dashboard-stats .value {
+  font-size: 2rem;
+  color: wheat;
+  font-weight: bold;
+}
+
+.dashboard-stats .label {
+  font-size: 1rem;
+  color: wheat;
+  margin-top: 5px;
 }
