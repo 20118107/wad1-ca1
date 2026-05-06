@@ -1,10 +1,19 @@
 {
   "info": {
     "appTitle": "The Library",
-    "classAssignment": "One",
+    "classAssignment": "Two",
     "location": "Waterford",
     "creator": "Aedín McLarnon"
   },
-  "userCollection": [],
+  "userCollection": [
+    {
+      "id": "4e4edb2b-d471-4865-a38c-f2f8f259e24b",
+      "firstName": "Aedín",
+      "lastName": "McLarnon",
+      "email": "aedinmclarnon@gmail.com",
+      "password": "Aedin1",
+      "genres": []
+    }
+  ],
   "genreCollection": []
 }
